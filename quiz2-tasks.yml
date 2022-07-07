@@ -1,0 +1,42 @@
+- name: Create a many dev and ops account in managed 1
+  hosts: managed1-host-maulanamalik
+  become: true
+
+  vars_files:
+          - group_vars/managed1-host-maulanamalik.yml
+          - secret.yml
+  tasks:
+         - name: Create dev[1-50] in managed 1
+           ansible.builtin.user:
+                        name: "{{item}}"
+                        password: "{{ pass | password_hash('sha512')}}"
+                        state: present
+           with_sequence: start=1 end=50
+
+         - name: Create ops[1-50] in managed 1
+           ansible.builtin.user:
+                        name: "{{item}}"
+                        password: "{{ pass | password_hash('sha512')}}"
+                        state: present
+           with_sequence: start=1 end=50
+
+- name: Create a many dev and ops account in managed 2
+  hosts: managed2-host-maulanamalik
+  become: true
+  vars_files:
+          - group_vars/managed2-host-maulanamalik.yml
+          - secret.yml
+  tasks:
+          - name: Create dev[51-100] in managed 2
+            ansible.builtin.user:
+                        name: "{{item}}"
+                        password: "{{ pass | password_hash('sha512')}}"
+                        state: present
+            with_sequence: start=51 end=100
+
+          - name: Create ops[51-100] in managed 2
+            ansible.builtin.user:
+                        name: "{{item}}"
+                        password: "{{ pass | password_hash('sha512')}}"
+                        state: present
+            with_sequence: start=51 end=100
