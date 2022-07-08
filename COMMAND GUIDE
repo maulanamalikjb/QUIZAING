@@ -2,6 +2,7 @@ Buat directory quiz2
 -mkdir quiz2
 Masuk directory quiz2 dan buat directory group_vars
 -cd quiz2
+-mkdir group_vars
 Buat 2 file managed1-host-maulanamalik.yml + managed2-host-maulanamalik.yml
 - vi managed1-host-maulanamalik.yml
 - maukin cript list_user_ops_managed1
