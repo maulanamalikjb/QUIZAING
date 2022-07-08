@@ -1,0 +1,8 @@
+1. Buat file quiz2 di home
+2. Buat file group_vars di quiz2
+3. Di dalam group_vars buat 2 file
+   - managed1-host-<username>.yml <--- isinya user ops1-50 + dev1-50
+   - managed2-host-<username>.yml <--- isinya user ops1-51 + dev1-100
+4. Di folder quiz2 buat file inventory samakan value nya dengan file yang di dalam folder group_vars
+5. Di dalam folder quiz2 buat file secret.yml variable nya pass dan value nya adinusa88 (harus di encrypted by using ansible-vault) dan gunakan password belajaransible untuk password enkripsi . ganti pemissions vault-pass dengan 600
+6. Di dalam quiz2 buat playbook quiz2-tasks.yml yang isinya membuat user yang sudah d buat di dalam folder group_vars dan menggunakan password adinusa88
