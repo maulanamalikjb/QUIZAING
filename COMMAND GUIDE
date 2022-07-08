@@ -16,8 +16,8 @@ echo 'belajaransible' > vault-pass
 chmod 600 vault-pass
 ansible-playbook --vault-password-file=vault-pass quiz2-taks.yml
 RAND_NUMBER=$(python3 -c "import random; print(random.randrange(1,50))")
-ssh pod-username-managed1 -l dev${RAND_NUMBER} 
-ssh pod-username-managed1 -l ops${RAND_NUMBER} 
+ssh pod-maulanamalik-managed1 -l dev${RAND_NUMBER} 
+ssh pod-maulanamalik-managed1 -l ops${RAND_NUMBER} 
 RAND_NUMBER=$(python3 -c "import random; print(random.randrange(51,100))")
-ssh pod-username-managed2 -l dev${RAND_NUMBER} 
-ssh pod-username-managed2 -l ops${RAND_NUMBER} 
+ssh pod-maulanamalik-managed2 -l dev${RAND_NUMBER} 
+ssh pod-maulanamalik-managed2 -l ops${RAND_NUMBER} 
