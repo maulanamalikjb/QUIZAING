@@ -1,40 +1,23 @@
-Buat directory quiz2
--mkdir quiz2
-Masuk directory quiz2 dan buat directory group_vars
--cd quiz2
--mkdir group_vars
-Buat 2 file managed1-host-maulanamalik.yml + managed2-host-maulanamalik.yml
-- vi managed1-host-maulanamalik.yml
-- maukin cript list_user_ops_managed1
-- vi managed2-host-maulanamalik.yml
-- maukin cript list_user_ops_managed2
-Di folder quiz2 buat file inventory
-- vi inventory
-[managed1-host-maulanamalik]
-pod-maulanamalik-managed1
-[managed2-host-maulanamalik]
-pod-maulanamalik-managed2
-Buat file ansible.cfg 
-- vi ansible.cfg
-[defaults]
-inventory = ./inventory
-Buat file secret.yml di folder quiz2
-- vi secret.yml dan masukan script secret.yml
-enkripsi file secret.yml
-- ansible-vault encrypt secret.yml
-dan masukan pasword belajaransible
-buat file playbook dengan nama quiz2-tasks.yml
-- vi quiz2-taks.yml masukan script file quiz2-tasks.yml
-setelah membuat file playbook masukan command
-- ansible-playbook --syntax-check --ask-vault-pass quiz2-tasks.yml
-- echo 'belajaransible' > vault-pass
-- chmod 600 vault-pass
-- ansible-playbook --vault-password-file=vault-pass quiz2-tasks.yml
-setelah selesay playbook cek login random dengan perintah
-- RAND_NUMBER=$(python3 -c "import random; print(random.randrange(1,50))") <---- untuk user managed1
-- ssh pod-maulanamalik-managed1 -l dev${RAND_NUMBER} <---- untuk user dev
-- ssh pod-maulanamalik-managed1 -l ops${RAND_NUMBER} <---- untuk user ops
-=====
-- RAND_NUMBER=$(python3 -c "import random; print(random.randrange(51,100))") <---- untuk user managed2
-- ssh pod-maulanamalik-managed1 -l dev${RAND_NUMBER} <---- untuk user dev
-- ssh pod-maulanamalik-managed1 -l ops${RAND_NUMBER} <---- untuk user ops
+mkdir quiz2
+cd quiz2
+mkdir group_vars
+cd group_vars
+vi managed1-host-maulanamalik.yml
+vi managed2-host-maulanamalik.yml
+cd ..
+vi ansible.cfg
+vi inventory
+vi secret.yml
+ansible-vault encrypt secret.yml
+belajaransible
+vi quiz2-taks.yml
+ansible-playbook --syntax-check --ask-vault-pass quiz2-taks.yml
+echo 'belajaransible' > vault-pass
+chmod 600 vault-pass
+ansible-playbook --vault-password-file=vault-pass quiz2-taks.yml
+RAND_NUMBER=$(python3 -c "import random; print(random.randrange(1,50))")
+ssh pod-username-managed1 -l dev${RAND_NUMBER} 
+ssh pod-username-managed1 -l ops${RAND_NUMBER} 
+RAND_NUMBER=$(python3 -c "import random; print(random.randrange(51,100))")
+ssh pod-username-managed2 -l dev${RAND_NUMBER} 
+ssh pod-username-managed2 -l ops${RAND_NUMBER} 
